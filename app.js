@@ -21,9 +21,7 @@ app.use(compression()); //Compress all routes
 
 // Set up mongoose connection
 const mongoose = require('mongoose');
-const dbUser = process.env.DB_USER;
-const dbPass = process.env.DB_PASS;
-const mongoDB = `mongodb+srv://${dbUser}:${dbPass}@cluster0.l696zul.mongodb.net/library?retryWrites=true&w=majority`;
+const mongoDB = process.env.DB_URI;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
